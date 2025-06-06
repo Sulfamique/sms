@@ -1,0 +1,10 @@
+.wrap table.sms-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wrap table.sms-table th,
+.wrap table.sms-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
