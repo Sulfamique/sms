@@ -1,17 +1,4 @@
 <?php
-/*
-Plugin Name: Simple Maillage SEO
-Plugin URI: https://x.com/Sulfamique
-Description: Plugin SEO pour un maillage interne automatique et simple.
-Version: 1.0
-Author: Sulfamique
-Author URI: https://github.com/Sulfamique/
-License: L1
-*/
-
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Quitter si accès direct
-}
 
 class SimpleMaillageSEO {
 
@@ -37,7 +24,7 @@ class SimpleMaillageSEO {
         if ( $hook !== 'toplevel_page_simple-maillage-seo' ) {
             return;
         }
-        wp_enqueue_style( 'sms-admin', plugins_url( 'admin.css', __FILE__ ) );
+        wp_enqueue_style( 'sms-admin', SMS_PLUGIN_URL . 'admin/css/admin.css' );
     }
 
     public static function add_admin_menu() {
@@ -161,4 +148,3 @@ class SimpleMaillageSEO {
     }
 }
 
-SimpleMaillageSEO::init();
