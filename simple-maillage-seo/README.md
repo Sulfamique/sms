@@ -14,4 +14,5 @@ Le dossier du plugin contient également une feuille de style `admin.css` pour a
 - Dans le menu "Maillage SEO", saisissez un mot clé et l'URL cible puis cliquez sur **Valider**.
 - Le mot clé apparait dans la liste et peut être supprimé à tout moment.
 - L'URL est automatiquement liée à la première occurrence du mot clé présente dans vos articles et pages existants.
+- Le plugin évite de créer des liens dans les titres, le sommaire ou le fil d'ariane pour privilégier uniquement le contenu principal.
 

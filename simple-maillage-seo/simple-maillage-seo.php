@@ -125,7 +125,19 @@ class SimpleMaillageSEO {
         $xpath = new DOMXPath( $dom );
 
         foreach ( $links as $keyword => $url ) {
-            $nodes = $xpath->query( '//text()[not(ancestor::a) and not(ancestor::h1) and not(ancestor::h2) and not(ancestor::h3) and not(ancestor::h4) and not(ancestor::h5) and not(ancestor::h6)]' );
+            $nodes = $xpath->query( '//text()[
+                not(ancestor::a)
+                and not(ancestor::h1)
+                and not(ancestor::h2)
+                and not(ancestor::h3)
+                and not(ancestor::h4)
+                and not(ancestor::h5)
+                and not(ancestor::h6)
+                and not(ancestor::nav)
+                and not(ancestor::header)
+                and not(ancestor::footer)
+                and not(ancestor::*[contains(@class,"sommaire") or contains(@class,"toc") or contains(@class,"breadcrumb")])
+            ]' );
             foreach ( $nodes as $node ) {
                 if ( stripos( $node->nodeValue, $keyword ) !== false ) {
                     $regex = '/(\b' . preg_quote( $keyword, '/' ) . '\b)/i';
