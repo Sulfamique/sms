@@ -6,7 +6,7 @@ Description: Plugin SEO pour un maillage interne automatique et simple.
 Version: 1.0
 Author: Sulfamique
 Author URI: https://github.com/Sulfamique/
-License: aucune idee
+License: L1
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,6 +20,7 @@ class SimpleMaillageSEO {
     public static function init() {
         add_action( 'admin_menu', array( __CLASS__, 'add_admin_menu' ) );
         add_action( 'admin_init', array( __CLASS__, 'handle_form_submission' ) );
+        add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_admin_assets' ) );
         add_filter( 'the_content', array( __CLASS__, 'apply_links' ) );
     }
 
@@ -30,6 +31,13 @@ class SimpleMaillageSEO {
 
     public static function save_links( $links ) {
         update_option( self::$option_key, $links );
+    }
+
+    public static function enqueue_admin_assets( $hook ) {
+        if ( $hook !== 'toplevel_page_simple-maillage-seo' ) {
+            return;
+        }
+        wp_enqueue_style( 'sms-admin', plugins_url( 'admin.css', __FILE__ ) );
     }
 
     public static function add_admin_menu() {
@@ -73,7 +81,7 @@ class SimpleMaillageSEO {
             <h1>Simple Maillage SEO</h1>
             <form method="post">
                 <?php wp_nonce_field( 'sms_save_links' ); ?>
-                <table class="widefat">
+                <table class="widefat sms-table">
                     <thead>
                         <tr>
                             <th>Mot clef</th>
@@ -117,7 +125,19 @@ class SimpleMaillageSEO {
         $xpath = new DOMXPath( $dom );
 
         foreach ( $links as $keyword => $url ) {
-            $nodes = $xpath->query( '//text()[not(ancestor::a) and not(ancestor::h1) and not(ancestor::h2) and not(ancestor::h3) and not(ancestor::h4) and not(ancestor::h5) and not(ancestor::h6)]' );
+            $nodes = $xpath->query( '//text()[
+                not(ancestor::a)
+                and not(ancestor::h1)
+                and not(ancestor::h2)
+                and not(ancestor::h3)
+                and not(ancestor::h4)
+                and not(ancestor::h5)
+                and not(ancestor::h6)
+                and not(ancestor::nav)
+                and not(ancestor::header)
+                and not(ancestor::footer)
+                and not(ancestor::*[contains(@class,"sommaire") or contains(@class,"toc") or contains(@class,"breadcrumb")])
+            ]' );
             foreach ( $nodes as $node ) {
                 if ( stripos( $node->nodeValue, $keyword ) !== false ) {
                     $regex = '/(\b' . preg_quote( $keyword, '/' ) . '\b)/i';
@@ -142,4 +162,3 @@ class SimpleMaillageSEO {
 }
 
 SimpleMaillageSEO::init();
-
