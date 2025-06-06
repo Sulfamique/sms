@@ -2,7 +2,7 @@
 
 Ce plugin WordPress permet de créer facilement des liens internes sur tout le site. Il ajoute un tableau de bord dans l'administration où vous pouvez définir des couples **mot clé / URL**. Chaque fois qu’un mot clé est trouvé dans un contenu, il est automatiquement remplacé par un lien vers l’URL définie.
 
-Le dossier du plugin contient également une feuille de style `admin.css` pour améliorer l'affichage du tableau de bord.
+Le dossier du plugin contient également une feuille de style `admin/css/admin.css` pour améliorer l'affichage du tableau de bord.
 
 ## Installation
 
