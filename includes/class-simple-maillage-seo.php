@@ -1,3 +1,5 @@
+<?php
+
 class SimpleMaillageSEO {
 
     private static $option_key = 'sms_keyword_links';
