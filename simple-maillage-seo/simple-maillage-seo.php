@@ -23,10 +23,13 @@ if ( ! extension_loaded( 'dom' ) ) {
     return;
 }
 
+// Définir les constantes du plugin
 define( 'SMS_PLUGIN_FILE', __FILE__ );
 define( 'SMS_PLUGIN_DIR', plugin_dir_path( SMS_PLUGIN_FILE ) );
 define( 'SMS_PLUGIN_URL', plugin_dir_url( SMS_PLUGIN_FILE ) );
 
+// Inclure la classe principale
 require_once SMS_PLUGIN_DIR . 'includes/class-simple-maillage-seo.php';
 
+// Initialiser le plugin
 SimpleMaillageSEO::init();
