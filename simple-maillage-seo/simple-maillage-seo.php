@@ -6,7 +6,7 @@ Description: Plugin SEO pour un maillage interne automatique et simple.
 Version: 1.0
 Author: Sulfamique
 Author URI: https://github.com/Sulfamique/
-License: aucune idee
+License: L1
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -162,4 +162,3 @@ class SimpleMaillageSEO {
 }
 
 SimpleMaillageSEO::init();
-
