@@ -24,7 +24,7 @@ class SimpleMaillageSEO {
         if ( $hook !== 'toplevel_page_simple-maillage-seo' ) {
             return;
         }
-        wp_enqueue_style( 'sms-admin', SMS_PLUGIN_URL . 'admin/css/admin.css' );
+        wp_enqueue_style( 'sms-admin', SMS_PLUGIN_URL . 'assets/css/admin.css' );
     }
 
     public static function add_admin_menu() {
