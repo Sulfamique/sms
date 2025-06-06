@@ -8,6 +8,7 @@ Le dossier du plugin contient également une feuille de style `admin.css` pour a
 
 1. Copier le dossier `simple-maillage-seo` dans le répertoire `wp-content/plugins/` de votre site WordPress.
 2. Activer l'extension "Simple Maillage SEO" depuis l'administration WordPress.
+3. Vérifiez que l'extension PHP **DOM** est installée : elle est nécessaire pour analyser le contenu et insérer les liens.
 
 ## Utilisation
 

@@ -13,6 +13,16 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Quitter si accès direct
 }
 
+// Le plugin repose sur l'extension PHP DOM pour manipuler le HTML
+if ( ! extension_loaded( 'dom' ) ) {
+    add_action( 'admin_notices', function() {
+        echo '<div class="notice notice-error"><p>';
+        esc_html_e( "Simple Maillage SEO requiert l'extension PHP DOM.", 'simple-maillage-seo' );
+        echo '</p></div>';
+    } );
+    return;
+}
+
 class SimpleMaillageSEO {
 
     private static $option_key = 'sms_keyword_links';
